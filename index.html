@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>title</title>
+    <meta name="description" content="" />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale=1"
+    />
+    <link rel="icon" type="image/png" href="./favicon.svg" />
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      --background-color: #fff;
+      --primary-text-color: black;
+
+      background-color: var(--background-color);
+      color: var(--primary-text-color);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      html {
+        --background-color: #1b1b1b;
+        --primary-text-color: #fff;
+      }
+    }
+
+    body {
+      margin: 0;
+    }
+
+    dialog {
+      width: 50vmin;
+      aspect-ratio: 16/10;
+    }
+
+    dialog::backdrop {
+      background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4));
+      animation: fade-in 1s;
+    }
+
+    .close {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .close button {
+      padding: 0;
+      border: 0;
+      background-color: var(--background-color);
+      cursor: pointer;
+    }
+
+    .close svg {
+      transition: transform 100ms ease-in;
+    }
+
+    .close svg:hover {
+      transition: transform 400ms ease-out;
+      transform: rotate(0.25turn);
+    }
+
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+  <body>
+    <script>
+      const onDialogClose = () => document.getElementById("dialog").close();
+    </script>
+
+    <dialog id="dialog">
+      <div class="close">
+        <button onclick="onDialogClose()">
+          <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+            <g data-name="Layer 2">
+              <path
+                d="m13.41 12 4.3-4.29a1 1 0 1 0-1.42-1.42L12 10.59l-4.29-4.3a1 1 0 0 0-1.42 1.42l4.3 4.29-4.3 4.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l4.29-4.3 4.29 4.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"
+                data-name="close"
+              />
+            </g>
+          </svg>
+        </button>
+      </div>
+      <p>Hee This is a modal</p>
+    </dialog>
+
+    <script>
+      document.getElementById("dialog").showModal();
+    </script>
+
+    <!-- <button >Open modal</button> -->
+  </body>
+</html>
